@@ -1,7 +1,7 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: RuoYi
+  name: Itheima
   # 版本
   version: 3.8.8
   # 版权年份
@@ -97,16 +97,7 @@ token:
   # 令牌有效期（默认30分钟）
   expireTime: 30
 
-## MyBatis配置
-#mybatis:
-#  # 搜索指定包别名
-#  typeAliasesPackage: com.zzyl.**.domain
-#  # 配置mapper的扫描，找到所有的mapper.xml映射文件
-#  mapperLocations: classpath*:mapper/**/*Mapper.xml
-#  # 加载全局的配置文件
-#  configLocation: classpath:mybatis/mybatis-config.xml
 # MyBatisPlus配置
-
 mybatis-plus:
   # 搜索指定包别名
   typeAliasesPackage: com.zzyl.**.domain
