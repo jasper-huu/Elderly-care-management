@@ -1,6 +1,8 @@
 package com.zzyl.nursing.domain;
 
 import java.math.BigDecimal;
+
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.zzyl.common.annotation.Excel;
@@ -12,6 +14,7 @@ import com.zzyl.common.core.domain.BaseEntity;
  * @author jasperhu
  * @date 2024-11-08
  */
+@Data
 public class NursingLevel extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
