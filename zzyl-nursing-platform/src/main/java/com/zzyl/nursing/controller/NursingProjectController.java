@@ -1,5 +1,9 @@
 package com.zzyl.nursing.controller;
 
+import com.zzyl.common.core.domain.R;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,23 +27,25 @@ import com.zzyl.common.core.page.TableDataInfo;
 
 /**
  * 护理项目Controller
- * 
- * @author ruoyi
- * @date 2024-11-07
+ *
+ * @author jasperhu
+ * @date 2024-11-09
  */
 @RestController
 @RequestMapping("/nursing/project")
+@Api(tags = "护理项目相关接口")
 public class NursingProjectController extends BaseController
 {
     @Autowired
     private INursingProjectService nursingProjectService;
 
-    /**
-     * 查询护理项目列表
-     */
-    @PreAuthorize("@ss.hasPermi('nursing:project:list')")
-    @GetMapping("/list")
-    public TableDataInfo list(NursingProject nursingProject)
+/**
+ * 查询护理项目列表
+ */
+@PreAuthorize("@ss.hasPermi('nursing:project:list')")
+@GetMapping("/list")
+@ApiOperation("查询护理项目列表")
+    public TableDataInfo<List<NursingProject>> list(@ApiParam(value = "护理项目查询条件") NursingProject nursingProject)
     {
         startPage();
         List<NursingProject> list = nursingProjectService.selectNursingProjectList(nursingProject);
@@ -52,7 +58,8 @@ public class NursingProjectController extends BaseController
     @PreAuthorize("@ss.hasPermi('nursing:project:export')")
     @Log(title = "护理项目", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
-    public void export(HttpServletResponse response, NursingProject nursingProject)
+    @ApiOperation("导出护理项目列表")
+    public void export(HttpServletResponse response, @ApiParam(value = "护理项目查询条件")  NursingProject nursingProject)
     {
         List<NursingProject> list = nursingProjectService.selectNursingProjectList(nursingProject);
         ExcelUtil<NursingProject> util = new ExcelUtil<NursingProject>(NursingProject.class);
@@ -64,9 +71,11 @@ public class NursingProjectController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('nursing:project:query')")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id)
+    @ApiOperation("获取护理项目详细信息")
+    public R<NursingProject> getInfo(@ApiParam(value = "护理项目ID", required = true)
+                                   @PathVariable("id") Long id)
     {
-        return success(nursingProjectService.selectNursingProjectById(id));
+                return R.ok(nursingProjectService.selectNursingProjectById(id));
     }
 
     /**
@@ -75,7 +84,8 @@ public class NursingProjectController extends BaseController
     @PreAuthorize("@ss.hasPermi('nursing:project:add')")
     @Log(title = "护理项目", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody NursingProject nursingProject)
+    @ApiOperation("新增护理项目")
+    public AjaxResult add(@ApiParam(value = "护理项目实体", required = true) @RequestBody NursingProject nursingProject)
     {
         return toAjax(nursingProjectService.insertNursingProject(nursingProject));
     }
@@ -86,7 +96,8 @@ public class NursingProjectController extends BaseController
     @PreAuthorize("@ss.hasPermi('nursing:project:edit')")
     @Log(title = "护理项目", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody NursingProject nursingProject)
+    @ApiOperation("修改护理项目")
+    public AjaxResult edit(@ApiParam(value = "护理项目实体", required = true)  @RequestBody NursingProject nursingProject)
     {
         return toAjax(nursingProjectService.updateNursingProject(nursingProject));
     }
@@ -96,8 +107,9 @@ public class NursingProjectController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('nursing:project:remove')")
     @Log(title = "护理项目", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable Long[] ids)
+    @DeleteMapping("/{ids}")
+    @ApiOperation("删除护理项目")
+    public AjaxResult remove(@ApiParam(value = "护理项目ID数组", required = true) @PathVariable Long[] ids)
     {
         return toAjax(nursingProjectService.deleteNursingProjectByIds(ids));
     }
