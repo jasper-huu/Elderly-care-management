@@ -16,6 +16,10 @@
     </description>
 
     <dependencies>
+        <dependency>
+            <groupId>com.zzyl</groupId>
+            <artifactId>zzyl-oss</artifactId>
+        </dependency>
 
         <!-- spring-boot-devtools -->
         <dependency>

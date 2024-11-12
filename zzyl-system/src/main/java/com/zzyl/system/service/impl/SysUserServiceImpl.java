@@ -517,7 +517,7 @@ public class SysUserServiceImpl implements ISysUserService
                     checkUserDataScope(u.getUserId());
                     deptService.checkDeptDataScope(user.getDeptId());
                     user.setUserId(u.getUserId());
-                    user.setUpdateBy(operName);
+                    user.setUpdateBy(u.getUpdateBy());
                     userMapper.updateUser(user);
                     successNum++;
                     successMsg.append("<br/>" + successNum + "、账号 " + user.getUserName() + " 更新成功");

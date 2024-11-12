@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectNursingPlanVo">
-        select id, sort_no, plan_name, status, create_time, update_time, create_by, update_by, remark from nursing_plan
+        select * from nursing_plan
     </sql>
 
     <select id="selectNursingPlanList" parameterType="NursingPlan" resultMap="NursingPlanResult">
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </where>
     </select>
     
-    <select id="selectNursingPlanById" parameterType="Long" resultMap="NursingPlanResult">
+    <select id="selectNursingPlanById" parameterType="Integer" resultMap="NursingPlanResult">
         <include refid="selectNursingPlanVo"/>
         where id = #{id}
     </select>
@@ -72,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </update>
 
-    <delete id="deleteNursingPlanById" parameterType="Long">
+    <delete id="deleteNursingPlanById" parameterType="Integer">
         delete from nursing_plan where id = #{id}
     </delete>
 

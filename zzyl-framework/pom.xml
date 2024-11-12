@@ -67,6 +67,10 @@
             <groupId>com.zzyl</groupId>
             <artifactId>zzyl-system</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zzyl</groupId>
+            <artifactId>zzyl-common</artifactId>
+        </dependency>
 
     </dependencies>
 

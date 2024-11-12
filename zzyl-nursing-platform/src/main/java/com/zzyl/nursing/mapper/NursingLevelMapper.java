@@ -1,15 +1,14 @@
 package com.zzyl.nursing.mapper;
 
+import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 import com.zzyl.nursing.domain.NursingLevel;
 
 /**
  * 护理等级Mapper接口
  * 
- * @author jasperhu
+ * @author LaoYe
  * @date 2024-11-09
  */
 @Mapper
@@ -21,7 +20,7 @@ public interface NursingLevelMapper extends BaseMapper<NursingLevel>
      * @param id 护理等级主键
      * @return 护理等级
      */
-    public NursingLevel selectNursingLevelById(Long id);
+    public NursingLevel selectNursingLevelById(Integer id);
 
     /**
      * 查询护理等级列表
@@ -53,7 +52,7 @@ public interface NursingLevelMapper extends BaseMapper<NursingLevel>
      * @param id 护理等级主键
      * @return 结果
      */
-    public int deleteNursingLevelById(Long id);
+    public int deleteNursingLevelById(Integer id);
 
     /**
      * 批量删除护理等级
@@ -61,5 +60,5 @@ public interface NursingLevelMapper extends BaseMapper<NursingLevel>
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
-    public int deleteNursingLevelByIds(Long[] ids);
+    public int deleteNursingLevelByIds(Integer[] ids);
 }
