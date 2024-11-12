@@ -2,18 +2,18 @@ package com.zzyl.nursing.service.impl;
 
 import java.util.List;
 import com.zzyl.common.utils.DateUtils;
+import com.zzyl.nursing.vo.NursingProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zzyl.nursing.mapper.NursingProjectMapper;
 import com.zzyl.nursing.domain.NursingProject;
 import com.zzyl.nursing.service.INursingProjectService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.util.Arrays;
 
 /**
  * 护理项目Service业务层处理
  * 
- * @author jasperhu
+ * @author ruoyi
  * @date 2024-11-09
  */
 @Service
@@ -31,7 +31,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     @Override
     public NursingProject selectNursingProjectById(Long id)
     {
-        return getById(id);
+        return nursingProjectMapper.selectById(id);
     }
 
     /**
@@ -55,7 +55,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     @Override
     public int insertNursingProject(NursingProject nursingProject)
     {
-        return save(nursingProject) ? 1 : 0;
+        return nursingProjectMapper.insert(nursingProject);
     }
 
     /**
@@ -67,7 +67,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     @Override
     public int updateNursingProject(NursingProject nursingProject)
     {
-        return updateById(nursingProject) ? 1 : 0;
+        return nursingProjectMapper.updateById(nursingProject);
     }
 
     /**
@@ -79,7 +79,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     @Override
     public int deleteNursingProjectByIds(Long[] ids)
     {
-        return removeByIds(Arrays.asList(ids)) ? 1 : 0;
+        return nursingProjectMapper.deleteBatchIds(List.of(ids));
     }
 
     /**
@@ -91,6 +91,11 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     @Override
     public int deleteNursingProjectById(Long id)
     {
-        return removeById(id) ? 1 : 0;
+        return nursingProjectMapper.deleteById(id);
+    }
+
+    @Override
+    public List<NursingProjectVo> selectAll() {
+        return nursingProjectMapper.selectAll();
     }
 }

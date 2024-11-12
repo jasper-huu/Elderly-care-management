@@ -33,11 +33,26 @@
         <jwt.version>0.9.1</jwt.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis-plus-spring-boot.version>3.5.2</mybatis-plus-spring-boot.version>
+        <aliyun.sdk.oss>3.17.4</aliyun.sdk.oss>
     </properties>
 
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
+            <!-- 阿里云工具类 -->
+            <dependency>
+                <groupId>com.zzyl</groupId>
+                <artifactId>zzyl-oss</artifactId>
+                <version>${zzyl.version}</version>
+            </dependency>
+
+            <!-- Aliyun依赖引入 -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.sdk.oss}</version>
+            </dependency>
+
             <!-- mybatis-plus 增强CRUD -->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -220,6 +235,7 @@
         <module>zzyl-generator</module>
         <module>zzyl-common</module>
         <module>zzyl-nursing-platform</module>
+        <module>zzyl-oss</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -8,12 +8,11 @@ import com.zzyl.nursing.mapper.NursingLevelMapper;
 import com.zzyl.nursing.domain.NursingLevel;
 import com.zzyl.nursing.service.INursingLevelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.util.Arrays;
 
 /**
  * 护理等级Service业务层处理
  * 
- * @author jasperhu
+ * @author LaoYe
  * @date 2024-11-09
  */
 @Service
@@ -29,9 +28,9 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
      * @return 护理等级
      */
     @Override
-    public NursingLevel selectNursingLevelById(Long id)
+    public NursingLevel selectNursingLevelById(Integer id)
     {
-        return getById(id);
+        return nursingLevelMapper.selectById(id);
     }
 
     /**
@@ -55,7 +54,7 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
     @Override
     public int insertNursingLevel(NursingLevel nursingLevel)
     {
-        return save(nursingLevel) ? 1 : 0;
+        return nursingLevelMapper.insert(nursingLevel);
     }
 
     /**
@@ -67,7 +66,7 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
     @Override
     public int updateNursingLevel(NursingLevel nursingLevel)
     {
-        return updateById(nursingLevel) ? 1 : 0;
+        return nursingLevelMapper.updateById(nursingLevel);
     }
 
     /**
@@ -77,9 +76,9 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
      * @return 结果
      */
     @Override
-    public int deleteNursingLevelByIds(Long[] ids)
+    public int deleteNursingLevelByIds(Integer[] ids)
     {
-        return removeByIds(Arrays.asList(ids)) ? 1 : 0;
+        return nursingLevelMapper.deleteBatchIds(List.of(ids));
     }
 
     /**
@@ -89,8 +88,8 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
      * @return 结果
      */
     @Override
-    public int deleteNursingLevelById(Long id)
+    public int deleteNursingLevelById(Integer id)
     {
-        return removeById(id) ? 1 : 0;
+        return nursingLevelMapper.deleteById(id);
     }
 }
