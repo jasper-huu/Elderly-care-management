@@ -16,30 +16,20 @@
     </description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.zzyl</groupId>
-            <artifactId>zzyl-oss</artifactId>
-        </dependency>
 
         <!-- spring-boot-devtools -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional> <!-- 表示依赖不会传递 -->
+            <optional>true</optional> &lt;!&ndash; 表示依赖不会传递 &ndash;&gt;
         </dependency>
 
-<!--        &lt;!&ndash; swagger3&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-boot-starter</artifactId>-->
-<!--        </dependency>-->
+        &lt;!&ndash; swagger3&ndash;&gt;
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>-->
 
-<!--        &lt;!&ndash; 防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger</groupId>-->
-<!--            <artifactId>swagger-models</artifactId>-->
-<!--            <version>1.6.2</version>-->
-<!--        </dependency>-->
         <!-- knife4j -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
@@ -47,8 +37,7 @@
             <version>3.0.3</version>
         </dependency>
 
-
-        <!-- Mysql驱动包 -->
+         <!-- Mysql驱动包 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -72,10 +61,16 @@
             <artifactId>zzyl-generator</artifactId>
         </dependency>
 
-        <!-- 护理业务模块-->
+        <!--护理模块-->
         <dependency>
             <groupId>com.zzyl</groupId>
             <artifactId>zzyl-nursing-platform</artifactId>
+        </dependency>
+
+        <!--OSS-->
+        <dependency>
+            <groupId>com.zzyl</groupId>
+            <artifactId>zzyl-oss</artifactId>
         </dependency>
 
     </dependencies>
@@ -85,7 +80,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.15</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <configuration>
                     <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
                 </configuration>

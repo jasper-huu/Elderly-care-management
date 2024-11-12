@@ -16,15 +16,6 @@
     </description>
 
     <dependencies>
-        <!--MyBatisPlus-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-annotation</artifactId>
-        </dependency>
 
         <!-- SpringBoot Web容器 -->
          <dependency>
@@ -66,10 +57,6 @@
         <dependency>
             <groupId>com.zzyl</groupId>
             <artifactId>zzyl-system</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zzyl</groupId>
-            <artifactId>zzyl-common</artifactId>
         </dependency>
 
     </dependencies>

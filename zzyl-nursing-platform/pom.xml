@@ -22,25 +22,6 @@
             <groupId>com.zzyl</groupId>
             <artifactId>zzyl-common</artifactId>
         </dependency>
-
-        <!-- Swagger3依赖 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.swagger</groupId>
-                    <artifactId>swagger-models</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.zzyl</groupId>
-            <artifactId>zzyl-system</artifactId>
-        </dependency>
-
     </dependencies>
-
-
 
 </project>

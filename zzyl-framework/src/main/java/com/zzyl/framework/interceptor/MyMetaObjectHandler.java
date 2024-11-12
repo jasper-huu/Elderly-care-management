@@ -8,30 +8,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-import static com.zzyl.common.utils.SecurityUtils.getLoginUser;
-
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        strictInsertFill(metaObject, "createTime", Date.class, new Date());
-        strictInsertFill(metaObject, "createBy", String.class, String.valueOf(loadUserId()));
+        this.strictInsertFill(metaObject, "createTime", Date.class, new Date());
+        // 自动填充创建人
+        this.strictInsertFill(metaObject, "createBy", String.class, String.valueOf(getLoginUser()));
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-//        strictUpdateFill(metaObject, "updateTime", Date.class, new Date());
-//        strictUpdateFill(metaObject, "updateBy", String.class, String.valueOf(loadUserId()));
         this.setFieldValByName("updateTime", new Date(), metaObject);
         this.setFieldValByName("updateBy", String.valueOf(getLoginUser()), metaObject);
+//        this.strictUpdateFill(metaObject, "updateTime", Date.class, new Date());
+//        this.strictUpdateFill(metaObject, "updateBy", String.class, String.valueOf(getLoginUser()));
     }
 
-    /**
-     * 获取当前登录人的ID
-     * @return  登录人ID
-     */
-    public Long loadUserId() {
-        LoginUser loginUser = getLoginUser();
+    public Long getLoginUser() {
+        LoginUser loginUser = SecurityUtils.getLoginUser();
+
         if (loginUser != null) {
             return loginUser.getUserId();
         }

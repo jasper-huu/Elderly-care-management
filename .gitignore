@@ -1,16 +1,47 @@
-.git
-logs
-rebel.xml
+######################################################################
+# Build Tools
+
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
-log.path_IS_UNDEFINED
-.DS_Store
-offline_user.md
-*.class
+
+######################################################################
+# IDE
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
-*.ipr
 *.iml
-/zzyl-common1/
+*.ipr
+
+### JRebel ###
+rebel.xml
+
+### NetBeans ###
+nbproject/private/
+build/*
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+######################################################################
+# Others
+*.log
+*.xml.versionsBackup
+*.swp
+
+!*/build/*.java
+!*/build/*.html
+!*/build/*.xml
