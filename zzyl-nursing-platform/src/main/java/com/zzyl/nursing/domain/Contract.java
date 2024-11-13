@@ -98,7 +98,7 @@ public class Contract extends BaseEntity
     */
     @Excel(name = "状态 (0: 未生效, 1: 已生效, 2: 已过期, 3: 已失效)")
     @ApiModelProperty(value = "状态 (0: 未生效, 1: 已生效, 2: 已过期, 3: 已失效)")
-    private Long status;
+    private Integer status;
 
     /**
     * 签约日期

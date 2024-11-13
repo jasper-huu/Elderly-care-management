@@ -1,5 +1,7 @@
 package com.zzyl.nursing.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -26,6 +28,7 @@ public class Elder extends BaseEntity
     * id
     */
     @ApiModelProperty(value = "主键ID")
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**

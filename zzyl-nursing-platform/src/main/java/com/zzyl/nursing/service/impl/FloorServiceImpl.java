@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzyl.nursing.domain.Floor;
 import com.zzyl.nursing.mapper.FloorMapper;
 import com.zzyl.nursing.service.IFloorService;
+import com.zzyl.nursing.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 楼层Service业务层处理
@@ -79,6 +81,17 @@ public class FloorServiceImpl extends ServiceImpl<FloorMapper, Floor> implements
     public int deleteFloorById(Long id)
     {
         return removeById(id) ? 1 : 0;
+    }
+
+    /**
+     * 获取所有楼层房间可用的床位
+     *
+     * @param status
+     * @return
+     */
+    @Override
+    public List<TreeVo> getRoomAndBedByBedStatus(Integer status) {
+        return floorMapper.getRoomAndBedByBedStatus(status);
     }
 
 }

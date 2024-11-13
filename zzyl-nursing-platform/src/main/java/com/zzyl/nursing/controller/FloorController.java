@@ -7,6 +7,7 @@ import com.zzyl.common.core.domain.R;
 import com.zzyl.common.enums.BusinessType;
 import com.zzyl.nursing.domain.Floor;
 import com.zzyl.nursing.service.IFloorService;
+import com.zzyl.nursing.vo.TreeVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -87,5 +88,16 @@ public class FloorController extends BaseController
     public AjaxResult remove(@ApiParam(value = "楼层ID", required = true) @PathVariable Long[] ids)
     {
         return toAjax(floorService.deleteFloorByIds(ids));
+    }
+
+    /**
+     * 获取所有楼层房间可用的床位
+     * @param status
+     * @return
+     */
+    @GetMapping("/getRoomAndBedByBedStatus/{status}")
+    public R getRoomAndBedByBedStatus(@ApiParam(value = "状态", required = true) @PathVariable Integer status){
+        List<TreeVo> voList = floorService.getRoomAndBedByBedStatus(status);
+        return R.ok(voList);
     }
 }
