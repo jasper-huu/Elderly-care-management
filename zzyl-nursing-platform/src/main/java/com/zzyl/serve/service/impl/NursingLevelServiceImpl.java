@@ -92,4 +92,14 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper, Nur
     {
         return nursingLevelMapper.deleteById(id);
     }
+
+    /**
+     * 查询所有可用的护理等级
+     *
+     * @return
+     */
+    @Override
+    public List<NursingLevel> listAll() {
+        return lambdaQuery().eq(NursingLevel::getStatus, 1).list();
+    }
 }

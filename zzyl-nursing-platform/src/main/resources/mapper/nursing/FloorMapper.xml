@@ -31,6 +31,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectFloorVo"/>
         where id = #{id}
     </select>
+    <resultMap id="floorRoomBedTreeVoResultMap" type="com.zzyl.nursing.vo.TreeVo">
+        <id column="fid" property="value"/>
+        <result column="fname" property="label"/>
+        <collection column="fid" property="children" ofType="com.zzyl.nursing.vo.TreeVo">
+            <id column="rid" property="value"/>
+            <result column="rname" property="label"/>
+            <collection column="rid" property="children" ofType="com.zzyl.nursing.vo.TreeVo">
+                <id column="bid" property="value"/>
+                <result column="bed_number" property="label"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="getRoomAndBedByBedStatus" resultMap="floorRoomBedTreeVoResultMap">
+        select
+            f.id fid,
+            f.name fname,
+            r.id rid,
+            r.type_name rname,
+            b.id bid,
+            b.bed_number
+        From floor f left join room r on f.id = r.floor_id
+                     left join bed b on r.id=b.room_id
+        where b.bed_status=0
+    </select>
 
     <insert id="insertFloor" parameterType="Floor" useGeneratedKeys="true" keyProperty="id">
         insert into floor
