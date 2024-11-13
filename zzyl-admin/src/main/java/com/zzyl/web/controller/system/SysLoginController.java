@@ -12,11 +12,9 @@ import com.zzyl.common.core.domain.AjaxResult;
 import com.zzyl.common.core.domain.entity.SysMenu;
 import com.zzyl.common.core.domain.entity.SysUser;
 import com.zzyl.common.core.domain.model.LoginBody;
-import com.zzyl.common.core.domain.model.LoginUser;
 import com.zzyl.common.utils.SecurityUtils;
 import com.zzyl.framework.web.service.SysLoginService;
 import com.zzyl.framework.web.service.SysPermissionService;
-import com.zzyl.framework.web.service.TokenService;
 import com.zzyl.system.service.ISysMenuService;
 
 /**
@@ -35,9 +33,6 @@ public class SysLoginController
 
     @Autowired
     private SysPermissionService permissionService;
-
-    @Autowired
-    private TokenService tokenService;
 
     /**
      * 登录方法
@@ -64,17 +59,11 @@ public class SysLoginController
     @GetMapping("getInfo")
     public AjaxResult getInfo()
     {
-        LoginUser loginUser = SecurityUtils.getLoginUser();
-        SysUser user = loginUser.getUser();
+        SysUser user = SecurityUtils.getLoginUser().getUser();
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合
         Set<String> permissions = permissionService.getMenuPermission(user);
-        if (!loginUser.getPermissions().equals(permissions))
-        {
-            loginUser.setPermissions(permissions);
-            tokenService.refreshToken(loginUser);
-        }
         AjaxResult ajax = AjaxResult.success();
         ajax.put("user", user);
         ajax.put("roles", roles);

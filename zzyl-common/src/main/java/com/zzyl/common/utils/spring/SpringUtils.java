@@ -12,7 +12,7 @@ import com.zzyl.common.utils.StringUtils;
 
 /**
  * spring工具类 方便在非spring管理环境中获取bean
- * ApplicationContextAware: 实现了ApplicationContextAware接口的类都可以通过该接口获取spring上下文环境
+ * 
  * @author ruoyi
  */
 @Component

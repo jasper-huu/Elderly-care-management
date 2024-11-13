@@ -53,10 +53,7 @@ public class GenUtils
         }
         else if (arraysContains(GenConstants.COLUMNTYPE_TIME, dataType))
         {
-
-            // 将日期时间类型改为LocalDateTime
-            column.setJavaType(GenConstants.TYPE_LOCAL_DATE_DATE);
-
+            column.setJavaType(GenConstants.TYPE_DATE);
             column.setHtmlType(GenConstants.HTML_DATETIME);
         }
         else if (arraysContains(GenConstants.COLUMNTYPE_NUMBER, dataType))
@@ -70,8 +67,7 @@ public class GenUtils
                 column.setJavaType(GenConstants.TYPE_BIGDECIMAL);
             }
             // 如果是整形
-            else if (str != null && str.length == 1 && Integer.parseInt(str[0]) <= 10
-                    || GenConstants.MYSQL_TINYINT.equals(column.getColumnType()) || GenConstants.MYSQL_INT.equals(column.getColumnType()))
+            else if (str != null && str.length == 1 && Integer.parseInt(str[0]) <= 10)
             {
                 column.setJavaType(GenConstants.TYPE_INTEGER);
             }

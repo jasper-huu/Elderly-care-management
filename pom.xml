@@ -25,52 +25,22 @@
         <swagger.version>3.0.0</swagger.version>
         <kaptcha.version>2.3.3</kaptcha.version>
         <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
-        <fastjson.version>2.0.53</fastjson.version>
-        <oshi.version>6.6.5</oshi.version>
+        <fastjson.version>2.0.43</fastjson.version>
+        <oshi.version>6.6.3</oshi.version>
         <commons.io.version>2.13.0</commons.io.version>
         <poi.version>4.1.2</poi.version>
         <velocity.version>2.3</velocity.version>
         <jwt.version>0.9.1</jwt.version>
+        <spring-boot-dependencies.version>2.5.15</spring-boot-dependencies.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis-plus-spring-boot.version>3.5.2</mybatis-plus-spring-boot.version>
         <aliyun.sdk.oss>3.17.4</aliyun.sdk.oss>
+        <hutool-all.version>5.8.10</hutool-all.version>
     </properties>
 
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
-            <!-- 阿里云工具类 -->
-            <dependency>
-                <groupId>com.zzyl</groupId>
-                <artifactId>zzyl-oss</artifactId>
-                <version>${zzyl.version}</version>
-            </dependency>
-
-            <!-- Aliyun依赖引入 -->
-            <dependency>
-                <groupId>com.aliyun.oss</groupId>
-                <artifactId>aliyun-sdk-oss</artifactId>
-                <version>${aliyun.sdk.oss}</version>
-            </dependency>
-
-            <!-- mybatis-plus 增强CRUD -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-spring-boot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-annotation</artifactId>
-                <version>${mybatis-plus-spring-boot.version}</version>
-            </dependency>
-
-            <!-- lombok的依赖配置-->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
 
             <!-- SpringFramework的依赖配置-->
             <dependency>
@@ -94,7 +64,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.5.15</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -217,13 +187,49 @@
                 <version>${zzyl.version}</version>
             </dependency>
 
-            <!-- 业务模块-->
+            <!--养老业务模块-->
             <dependency>
                 <groupId>com.zzyl</groupId>
                 <artifactId>zzyl-nursing-platform</artifactId>
                 <version>${zzyl.version}</version>
             </dependency>
 
+            <!--OSS-->
+            <dependency>
+                <groupId>com.zzyl</groupId>
+                <artifactId>zzyl-oss</artifactId>
+                <version>${zzyl.version}</version>
+            </dependency>
+
+            <!--Lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus 增强CRUD -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus-spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.sdk.oss}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

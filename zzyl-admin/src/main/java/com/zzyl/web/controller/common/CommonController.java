@@ -82,19 +82,20 @@ public class CommonController
     {
         try
         {
-            // 上传文件路径
+//            // 上传文件路径
 //            String filePath = RuoYiConfig.getUploadPath();
 //            // 上传并返回新文件名称
 //            String fileName = FileUploadUtils.upload(filePath, file);
 //            String url = serverConfig.getUrl() + fileName;
-            // 获得原始文件名
+
+            // 上传到OSS
             String url = aliyunOSSOperator.upload(file.getBytes(), file.getOriginalFilename());
 
             AjaxResult ajax = AjaxResult.success();
             ajax.put("url", url);
             ajax.put("fileName", url);
 //            ajax.put("newFileName", FileUtils.getName(fileName));
-//            ajax.put("originalFilename", file.getOriginalFilename());
+            ajax.put("originalFilename", file.getOriginalFilename());
             return ajax;
         }
         catch (Exception e)

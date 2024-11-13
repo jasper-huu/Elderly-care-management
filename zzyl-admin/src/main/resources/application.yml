@@ -1,7 +1,7 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: Itheima
+  name: RuoYi
   # 版本
   version: 3.8.8
   # 版权年份
@@ -97,6 +97,11 @@ token:
   # 令牌有效期（默认30分钟）
   expireTime: 30
 
+## MyBatis配置
+#mybatis:
+#  # 加载全局的配置文件
+#  configLocation: classpath:mybatis/mybatis-config.xml
+
 # MyBatisPlus配置
 mybatis-plus:
   # 搜索指定包别名
@@ -131,7 +136,6 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
-
 
 # 阿里云OSS相关配置
 aliyun:
